@@ -4,6 +4,8 @@ const VERSION: String = "v0.0.0"
 const user_dir: String = "user://"
 const setting_file: String = "settings.txt"
 
+var test = 0
+
 var settings: Dictionary = {
 	"first_start": true,
 	"move_right": KEY_D,
@@ -15,7 +17,7 @@ var settings: Dictionary = {
 	}
 
 
-var key_map: Dictionary = {"f1": KEY_F1}
+var key_map: Dictionary = {"f1": KEY_F1, "f2": KEY_F2}
 
 var _file: file_handler = file_handler.new()
 
@@ -38,7 +40,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("f1"):
 		_open_user_directory()
 		
-		
+				
+	if event.is_action_pressed("move_down"):
+		Global.pr("TEST: "+str(test))
+		test+=1
 	#Example of changing the keymapping
 	if event.is_action_pressed("move_up"):
 		change_or_add_key_binding("f1", KEY_Z, false)
